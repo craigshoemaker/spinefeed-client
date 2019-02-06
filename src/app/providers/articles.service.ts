@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class ArticlesService {
 
   constructor() { }
+
+  analyze(path: string) {
+    alert(`articles: ${path}`);
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticlesService } from '../../providers/articles.service';
 
 @Component({
   selector: 'app-input',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputComponent implements OnInit {
 
-  constructor() { }
+  path: string;
 
-  ngOnInit() {
+  isEmptyPath: boolean;
+
+  constructor(private articles: ArticlesService) { }
+
+  ngOnInit() {}
+
+  go() {
+
+    const hasValue = this.path && this.path.length > 0;
+
+    this.isEmptyPath = !hasValue;
+
+    if (hasValue) {
+      this.articles.analyze(this.path);
+    }
+
   }
 
 }

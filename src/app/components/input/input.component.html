@@ -1,2 +1,13 @@
-<input type="text" placeholder="path to file or folder">
-<button class="button">GO</button>
+<input type="text"
+    class="input"
+    placeholder="path to file or folder"
+    [(ngModel)]="path">
+
+<button 
+    class="button" 
+    (click)="go();">GO</button>
+
+<div class="information"
+    [hidden]="!isEmptyPath">
+    Please enter a path to anaylze.
+</div>
