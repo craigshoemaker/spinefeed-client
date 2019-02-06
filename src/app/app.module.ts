@@ -21,6 +21,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { InputComponent } from './components/input/input.component';
 import { StatsComponent } from './components/stats/stats.component';
+import { ResultsComponent } from './components/results/results.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -33,7 +34,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     WebviewDirective,
     InputComponent,
-    StatsComponent
+    StatsComponent,
+    ResultsComponent
   ],
   imports: [
     BrowserModule,
