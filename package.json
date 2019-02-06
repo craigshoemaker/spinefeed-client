@@ -1,11 +1,11 @@
 {
-  "name": "angular-electron",
-  "version": "5.1.0",
-  "description": "Angular 7 with Electron (Typescript + SASS + Hot Reload)",
-  "homepage": "https://github.com/maximegris/angular-electron",
+  "name": "spinefeed-client",
+  "version": "0.0.1",
+  "description": "Spinefeed Client App",
+  "homepage": "https://github.com/craigshoemaker/spinefeed-client",
   "author": {
-    "name": "Maxime GRIS",
-    "email": "maxime.gris@gmail.com"
+    "name": "Craig Shoemaker",
+    "email": "cshoe@microsoft.com"
   },
   "keywords": [
     "angular",
