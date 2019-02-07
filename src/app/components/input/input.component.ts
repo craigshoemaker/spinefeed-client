@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticlesService } from '../../providers/articles.service';
+import { SpinefeedService } from '../../providers/spinefeed.service';
 
 @Component({
   selector: 'app-input',
@@ -12,7 +12,7 @@ export class InputComponent implements OnInit {
 
   isEmptyPath: boolean;
 
-  constructor(private articles: ArticlesService) { }
+  constructor(private spinefeed: SpinefeedService) { }
 
   ngOnInit() {}
 
@@ -23,7 +23,7 @@ export class InputComponent implements OnInit {
     this.isEmptyPath = !hasValue;
 
     if (hasValue) {
-      this.articles.analyze(this.path);
+      this.spinefeed.analyze(this.path);
     }
 
   }

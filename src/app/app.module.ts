@@ -14,6 +14,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { ElectronService } from './providers/electron.service';
 import { ArticlesService } from './providers/articles.service';
+import { FilesService } from './providers/files.service';
+import { SpinefeedService } from './providers/spinefeed.service';
 
 import { WebviewDirective } from './directives/webview.directive';
 
@@ -52,7 +54,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     ElectronService,
-    ArticlesService
+    SpinefeedService,
+    ArticlesService,
+    FilesService
   ],
   bootstrap: [AppComponent]
 })
