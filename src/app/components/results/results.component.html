@@ -1,3 +1,13 @@
-<p>
-  results works!
-</p>
+<div class="results-container">
+    <div *ngFor="let article of feedback.articles">
+        <div>
+            <details>
+                <summary>
+                    <h3>{{ article.title }}</h3>
+                    <span class="has-text-grey-light">{{ article.name }}</span>
+                </summary>
+                <div class="results" [innerHTML]="article.results"></div>
+            </details>
+        </div>
+    </div>
+</div>

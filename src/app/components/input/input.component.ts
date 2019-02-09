@@ -8,8 +8,7 @@ import { SpinefeedService } from '../../providers/spinefeed.service';
 })
 export class InputComponent implements OnInit {
 
-  path: string;
-
+  path: 'C:\\Users\\cshoe\\Documents\\data\\docs\\az-docs-pr\\articles\\azure-functions';
   isEmptyPath: boolean;
 
   constructor(private spinefeed: SpinefeedService) { }
