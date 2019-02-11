@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, shell, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
@@ -6,7 +6,12 @@ let win, serve;
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
 
-function createWindow() {
+ipcMain.on('open-file', (event, filePathAndName) => {
+  // debugger;
+  shell.openItem(filePathAndName);
+});
+
+const createWindow = () => {
 
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
@@ -42,7 +47,7 @@ function createWindow() {
     win = null;
   });
 
-}
+};
 
 try {
 

@@ -13,6 +13,7 @@ export class SpinefeedService {
 
   getData() {
     return {
+        root: `C:\\Users\\cshoe\\Documents\\data\\docs\\az-docs-pr\\articles\\azure-functions`,
         total: 120,
         invalid: 98,
         valid: 22,

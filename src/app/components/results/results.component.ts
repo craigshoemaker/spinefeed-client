@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SpinefeedService } from '../../providers/spinefeed.service';
+import * as path from 'path';
+
+const ipcRenderer = require('electron').ipcRenderer;
 
 @Component({
   selector: 'app-results',
@@ -30,9 +33,9 @@ export class ResultsComponent implements OnInit {
     e.srcElement.querySelector('.tools').setAttribute('hidden', 'hidden');
   }
 
-  open(e, name) {
-    alert(name);
-    e.stopPropagation();
+  open(name) {
+    const filePathAndName = path.join(this.feedback.root, name);
+    ipcRenderer.send('open-file', filePathAndName);
   }
 
   ngOnInit() {  }

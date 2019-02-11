@@ -5,7 +5,7 @@
                 <summary (mouseenter)="mouseenter($event)" (mouseleave)="mouseleave($event)">
                     <h3>{{ article.title }}</h3>
                     <span class="has-text-grey-light">{{ article.name }}</span>
-                    <div class="tools" hidden><i (click)="open($event, article.name)" class="fas fa-external-link-alt"></i></div>
+                    <div class="tools" hidden><i (click)="open(article.name)" class="fas fa-external-link-alt"></i></div>
                 </summary>
                 <div class="results content">
                     <div class="close-button"><a (click)="closeDetails($event)" class="delete"></a></div>
