@@ -16,16 +16,16 @@ export class SpinefeedService {
         total: 120,
         invalid: 98,
         valid: 22,
-        results: [
+        articles: [
           {
             name: 'functions-api-definition.md',
             title: 'OpenAPI 2.0 metadata support in Azure Functions (preview)',
-            results: ``
+            results: `rezultz 1`
           },
           {
             name: 'functions-app-settings.md',
             title: 'App settings reference for Azure Functions',
-            results: ``
+            results: `rezultz 2`
           }
         ]
       };

@@ -6,7 +6,10 @@
                     <h3>{{ article.title }}</h3>
                     <span class="has-text-grey-light">{{ article.name }}</span>
                 </summary>
-                <div class="results" [innerHTML]="article.results"></div>
+                <div class="results content">
+                    <div class="close-button"><a (click)="closeDetails($event)" class="delete"></a></div>
+                    <div [innerHTML]="article.results"></div>
+                </div>
             </details>
         </div>
     </div>

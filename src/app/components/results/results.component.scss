@@ -11,9 +11,9 @@ details {
 }
 
 details .results {
-    background-color:#fff;
-    padding:25px;
-    border-radius: 4px;
+    background-color: #fff;
+    padding: 20px;
+    border-top: 1px solid #eee;
 }
 
 summary {
@@ -34,4 +34,9 @@ summary:focus {
 
 .results-container {
     margin-top:25px;
+}
+
+.close-button {
+    position: absolute;
+    right: 50px;
 }
