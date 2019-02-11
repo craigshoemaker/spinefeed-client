@@ -4,6 +4,7 @@
 }
 
 details {
+    position: relative;
     padding: 1em;
     border:solid 1px #eee;
     border-radius: 4px;
@@ -21,7 +22,7 @@ summary {
 }
 
 details:hover {
-    background-color: #f6f6f6;    
+    border:solid 1px #ccc;
 }
 
 summary::-webkit-details-marker {
@@ -39,4 +40,16 @@ summary:focus {
 .close-button {
     position: absolute;
     right: 50px;
+}
+
+.tools {
+    position: absolute;
+    right: 50px;
+    top: 20px;
+    color: #ccc;
+}
+
+.tools i:hover,
+.close-button a.delete:hover {
+    color:hsl(204, 86%, 53%);
 }

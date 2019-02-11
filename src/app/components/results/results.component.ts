@@ -22,6 +22,19 @@ export class ResultsComponent implements OnInit {
     e.srcElement.closest('details').removeAttribute('open');
   }
 
+  mouseenter(e) {
+    e.srcElement.querySelector('.tools').removeAttribute('hidden');
+  }
+
+  mouseleave(e) {
+    e.srcElement.querySelector('.tools').setAttribute('hidden', 'hidden');
+  }
+
+  open(e, name) {
+    alert(name);
+    e.stopPropagation();
+  }
+
   ngOnInit() {  }
 
 }
