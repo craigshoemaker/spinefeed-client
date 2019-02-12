@@ -13,29 +13,14 @@ const ipcRenderer = require('electron').ipcRenderer;
 export class ResultsComponent implements OnInit {
 
   feedback: any;
+  root: string;
   subscription: Subscription;
 
   constructor(private spinefeed: SpinefeedService) {
     this.subscription = this.spinefeed.getResults().subscribe(results => {
       this.feedback = results;
+      this.root = results.root;
     });
-  }
-
-  closeDetails(e) {
-    e.srcElement.closest('details').removeAttribute('open');
-  }
-
-  mouseenter(e) {
-    e.srcElement.querySelector('.tools').removeAttribute('hidden');
-  }
-
-  mouseleave(e) {
-    e.srcElement.querySelector('.tools').setAttribute('hidden', 'hidden');
-  }
-
-  open(name) {
-    const filePathAndName = path.join(this.feedback.root, name);
-    ipcRenderer.send('open-file', filePathAndName);
   }
 
   ngOnInit() {  }

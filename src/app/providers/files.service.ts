@@ -29,7 +29,10 @@ export class FilesService {
         } else {
           files.forEach(file => {
             const contents = fs.readFileSync(file, 'utf8');
-            fileContents.push(contents);
+            fileContents.push({
+              filePath: file,
+              content: contents
+            });
           });
 
           resolve(fileContents);

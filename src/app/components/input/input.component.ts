@@ -22,7 +22,7 @@ export class InputComponent implements OnInit {
     this.isEmptyPath = !hasValue;
 
     if (hasValue) {
-      this.spinefeed.analyze(this.path);
+      this.spinefeed.batch(this.path);
     }
 
   }

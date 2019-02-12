@@ -1,0 +1,38 @@
+.article-container {
+    position: relative;
+    padding: 1em;
+    border:solid 1px #eee;
+    border-radius: 4px;
+    margin-bottom:10px;
+}
+
+.article-container:hover {
+    border:solid 1px #ccc;
+}
+
+.article {
+    cursor: pointer;
+}
+
+.results {
+    background-color: #fff;
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.close-button {
+    position: absolute;
+    right: 50px;
+}
+
+.tools {
+    position: absolute;
+    right: 50px;
+    top: 16px;
+    color: #ccc;
+}
+
+.tools i:hover,
+.close-button a.delete:hover {
+    color:hsl(204, 86%, 53%) !important;
+}

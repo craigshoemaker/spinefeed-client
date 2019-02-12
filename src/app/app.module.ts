@@ -16,6 +16,7 @@ import { ElectronService } from './providers/electron.service';
 import { ArticlesService } from './providers/articles.service';
 import { FilesService } from './providers/files.service';
 import { SpinefeedService } from './providers/spinefeed.service';
+import { ConfigService } from './providers/config.service';
 
 import { WebviewDirective } from './directives/webview.directive';
 
@@ -24,6 +25,8 @@ import { HomeComponent } from './components/home/home.component';
 import { InputComponent } from './components/input/input.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { ResultsComponent } from './components/results/results.component';
+import { ArticleResultComponent } from './components/article-result/article-result.component';
+import { CommandsComponent } from './components/commands/commands.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -37,7 +40,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     WebviewDirective,
     InputComponent,
     StatsComponent,
-    ResultsComponent
+    ResultsComponent,
+    ArticleResultComponent,
+    CommandsComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ElectronService,
     SpinefeedService,
     ArticlesService,
-    FilesService
+    FilesService,
+    ConfigService
   ],
   bootstrap: [AppComponent]
 })
