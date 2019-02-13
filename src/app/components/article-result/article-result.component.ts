@@ -37,9 +37,9 @@ export class ArticleResultComponent implements OnInit {
 
   formatHTML(html) {
     return html
-            .replace(/\&/g, '&amp;')
+            .replace(/\<h3/g, '<h3 class="is-size-6"') // <- hack find a way to remove with CSS
             .replace(/ id=\".*\"/g, '')
-            .replace(/\<service\>/ig, '&gt;service&lt;')
+            .replace(/\<service\>/ig, '&lt;service&gt;')
           ;
   }
 
