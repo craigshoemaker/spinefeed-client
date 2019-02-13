@@ -15,7 +15,7 @@ export class StatsComponent implements OnInit {
   isHidden = true;
 
   constructor(private spinefeed: SpinefeedService) {
-    this.subscription = this.spinefeed.getResults().subscribe(results => {
+    this.subscription = this.spinefeed.on('data').subscribe(results => {
       this.results = results;
       this.isHidden = false;
     });

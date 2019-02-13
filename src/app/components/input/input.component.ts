@@ -16,7 +16,7 @@ export class InputComponent implements OnInit {
   isLoading = false;
 
   constructor(private spinefeed: SpinefeedService) {
-    this.subscription = this.spinefeed.getResults().subscribe(results => {
+    this.subscription = this.spinefeed.on('complete').subscribe(() => {
       this.isLoading = false;
     });
   }

@@ -10,12 +10,17 @@ const axios = require('axios').default;
 })
 export class SpinefeedService {
 
-  private subject = new Subject<any>();
+  private dataSubject = new Subject<any>();
+  private completeSubject = new Subject<any>();
 
   constructor(private filesService: FilesService, private config: ConfigService) { }
 
-  getResults(): Observable<any> {
-      return this.subject.asObservable();
+  on(type: string): Observable<any> {
+    if (/data/.test(type)) {
+      return this.dataSubject.asObservable();
+    } else {
+      return this.completeSubject.asObservable();
+    }
   }
 
   async batch(fileOrFolderPath: string) {
@@ -27,7 +32,8 @@ export class SpinefeedService {
       };
 
       const response = await axios.post(url, JSON.stringify(files), requestConfig);
-      this.subject.next(response.data.details);
+      this.dataSubject.next(response.data.details);
+      this.completeSubject.next();
 
     } catch (error) {
       debugger;
