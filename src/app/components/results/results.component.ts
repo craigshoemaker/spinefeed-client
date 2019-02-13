@@ -15,8 +15,13 @@ export class ResultsComponent implements OnInit {
   feedback: any;
   root: string;
   subscription: Subscription;
+  beginSubscription: Subscription;
 
   constructor(private spinefeed: SpinefeedService) {
+    this.beginSubscription = this.spinefeed.on('begin').subscribe(() => {
+      this.feedback = {};
+    });
+
     this.subscription = this.spinefeed.on('data').subscribe(results => {
       this.feedback = results;
       this.root = results.root;

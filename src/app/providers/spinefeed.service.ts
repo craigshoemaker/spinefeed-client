@@ -11,13 +11,17 @@ const axios = require('axios').default;
 export class SpinefeedService {
 
   private dataSubject = new Subject<any>();
+  private beginSubject = new Subject<any>();
   private completeSubject = new Subject<any>();
 
   constructor(private filesService: FilesService, private config: ConfigService) { }
 
   on(type: string): Observable<any> {
+
     if (/data/.test(type)) {
       return this.dataSubject.asObservable();
+    } else if (/begin/.test(type)) {
+      return this.beginSubject.asObservable();
     } else {
       return this.completeSubject.asObservable();
     }
@@ -25,6 +29,8 @@ export class SpinefeedService {
 
   async batch(fileOrFolderPath: string) {
     try {
+      this.beginSubject.next();
+
       const files = await this.filesService.get(fileOrFolderPath);
       const url = `${this.config.urls.batch()}?&output=html`;
       const requestConfig = {

@@ -11,10 +11,13 @@ export class CommandsComponent implements OnInit {
 
   isVisible = false;
 
-  subscription: Subscription;
-
   constructor(private spinefeed: SpinefeedService) {
-    this.subscription = this.spinefeed.on('complete').subscribe(() => {
+
+    this.spinefeed.on('begin').subscribe(() => {
+      this.isVisible = false;
+    });
+
+    this.spinefeed.on('complete').subscribe(() => {
       this.isVisible = true;
     });
   }

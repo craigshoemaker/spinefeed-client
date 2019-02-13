@@ -10,12 +10,14 @@ import { SpinefeedService } from '../../providers/spinefeed.service';
 export class StatsComponent implements OnInit {
 
   results: any;
-  subscription: Subscription;
-
   isHidden = true;
 
   constructor(private spinefeed: SpinefeedService) {
-    this.subscription = this.spinefeed.on('data').subscribe(results => {
+    this.spinefeed.on('begin').subscribe(results => {
+      this.isHidden = true;
+    });
+
+    this.spinefeed.on('data').subscribe(results => {
       this.results = results;
       this.isHidden = false;
     });
