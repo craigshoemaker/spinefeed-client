@@ -1,16 +1,12 @@
-
-<div class="columns is-mobile">
-    <div class="column is-four-fifths-mobile">
+<div class="field has-addons">
+    <div class="control" style="width: 100%">
         <input type="text"
             class="input"
             placeholder="path to file or folder"
-            [(ngModel)]="path" autofocus
-            >
+            [(ngModel)]="path">
     </div>
-    <div class="column">
-        <button 
-            class="button" 
-            (click)="go();">GO</button>
+    <div class="control">
+        <button class="button" (click)="go();"><i class="fas fa-share-square"></i></button>
     </div>
 </div>
 

@@ -1,13 +1,15 @@
 <div class="article-container">
-    <div class="article" (click)="toggleDetails()"
+    <div class="article"
+         (click)="toggleDetails()"
          (mouseenter)="toggleTools()"
          (mouseleave)="toggleTools()">
         <h3>{{ article.title }}</h3>
-        <span class="has-text-grey-light">{{ article.filePath }}</span>
+        <span class="has-text-grey-light" 
+              [title]="article.filePath">{{ getFileName(article.filePath) }}</span>
         <div class="tools" [hidden]="!isToolsVisible"><i (click)="open($event, article.filePath)" class="fas fa-external-link-alt"></i></div>
     </div>
     <div class="results content" [hidden]="!isDetailsVisible">
       <div class="close-button"><a (click)="toggleDetails()" class="delete"></a></div>
-      <div [innerHTML]="article.results"></div>
+      <div innerHTML="{{ formatHTML(article.string) }}"></div>
     </div>
 </div>

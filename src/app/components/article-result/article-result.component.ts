@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as path from 'path';
-import { debugOutputAstAsTypeScript } from '@angular/compiler';
 
 const ipcRenderer = require('electron').ipcRenderer;
 
@@ -19,6 +18,10 @@ export class ArticleResultComponent implements OnInit {
 
   constructor() {}
 
+  getFileName(filePath) {
+    return path.basename(filePath);
+  }
+
   toggleDetails() {
     this.isDetailsVisible = !this.isDetailsVisible;
   }
@@ -27,10 +30,17 @@ export class ArticleResultComponent implements OnInit {
     this.isToolsVisible = !this.isToolsVisible;
   }
 
-  open(e, name) {
-    const filePathAndName = path.join(this.root, name);
-    ipcRenderer.send('open-file', filePathAndName);
+  open(e, filePath) {
+    ipcRenderer.send('open-file', filePath);
     e.stopPropagation();
+  }
+
+  formatHTML(html) {
+    return html
+            .replace(/\&/g, '&amp;')
+            .replace(/ id=\".*\"/g, '')
+            .replace(/\<service\>/ig, '&gt;service&lt;')
+          ;
   }
 
   ngOnInit() {  }
