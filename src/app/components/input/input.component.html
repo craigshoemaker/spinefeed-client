@@ -6,7 +6,10 @@
             [(ngModel)]="path">
     </div>
     <div class="control">
-        <button class="button" (click)="go();"><i class="fas fa-share-square"></i></button>
+        <button class="button" (click)="go();">
+            <span [hidden]="isLoading"><i class="fas fa-share-square"></i></span>
+            <span [hidden]="!isLoading"><i class="fas fa-spinner fa-spin"></i></span>
+        </button>
     </div>
 </div>
 

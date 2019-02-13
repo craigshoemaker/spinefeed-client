@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { SpinefeedService } from '../../providers/spinefeed.service';
 
 @Component({
@@ -8,23 +9,33 @@ import { SpinefeedService } from '../../providers/spinefeed.service';
 })
 export class InputComponent implements OnInit {
 
-  path: 'C:\\Users\\cshoe\\Documents\\data\\docs\\az-docs-pr\\articles\\azure-functions';
+  subscription: Subscription;
+  path: string;
   isEmptyPath: boolean;
 
-  constructor(private spinefeed: SpinefeedService) { }
+  isLoading = false;
+
+  constructor(private spinefeed: SpinefeedService) {
+    this.subscription = this.spinefeed.getResults().subscribe(results => {
+      this.isLoading = false;
+    });
+  }
 
   ngOnInit() {}
 
   go() {
 
-    const hasValue = this.path && this.path.length > 0;
+    if (!this.isLoading) {
+      this.isLoading = true;
 
-    this.isEmptyPath = !hasValue;
+      const hasValue = this.path && this.path.length > 0;
 
-    if (hasValue) {
-      this.spinefeed.batch(this.path);
+      this.isEmptyPath = !hasValue;
+
+      if (hasValue) {
+        this.spinefeed.batch(this.path);
+      }
     }
-
   }
 
 }
