@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { SpinefeedService } from '../../providers/spinefeed.service';
 
 @Component({
   selector: 'app-commands',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommandsComponent implements OnInit {
 
-  constructor() { }
+  isVisible = false;
+
+  subscription: Subscription;
+
+  constructor(private spinefeed: SpinefeedService) {
+    this.subscription = this.spinefeed.on('complete').subscribe(() => {
+      this.isVisible = true;
+    });
+  }
 
   export() {
     alert('export');

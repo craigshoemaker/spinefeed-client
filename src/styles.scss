@@ -4,6 +4,10 @@ hidden {
     display: none !important;
 }
 
+*[data-invisible="true"] {
+    visibility: hidden !important;
+}
+
 body {
     padding:20px;
 }

@@ -12,6 +12,7 @@
         </button>
     </div>
 </div>
+<div [attr.data-invisible]="!isLoading" class="has-text-centered has-text-grey-light is-size-7 loading-message">{{ loadingMessage }}...</div>
 
 <div class="information is-info" [hidden]="!isEmptyPath">
     Please enter a path to anaylze.
