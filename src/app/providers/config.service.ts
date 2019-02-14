@@ -13,8 +13,11 @@ export class ConfigService {
     article: () => `${SERVER_LOCATION}/api/article`
   };
 
+  storageKeys = {
+    path: 'spinefeed.client.path'
+  };
+
   messages = {
-    invalidArticleType: 'Invalid article type. Spinefeed only provides feedback for Quickstarts, Tutorials, and Overview articles.\n\nYou can change the article type by updating the "ms.topic" field in the article metadata.',
     loadingMessages: [
       'Contacting Houston and aligning satellites',
       'Herding a bale of turtles',
