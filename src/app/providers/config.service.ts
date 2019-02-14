@@ -18,7 +18,7 @@ export class ConfigService {
     loadingMessages: [
       'Contacting Houston and aligning satellites',
       'Herding a bale of turtles',
-      'Corralling the crazy cats',
+      'Corralling a company of crazy cats',
       'Aligning electrons in an orderly fashion',
       'Opening a portal to the other side',
       'Jumping to lightspeed',
