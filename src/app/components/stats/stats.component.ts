@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { SpinefeedService } from '../../providers/spinefeed.service';
+import { DataService } from '../../providers/data.service';
 
 @Component({
   selector: 'app-stats',
@@ -12,14 +12,16 @@ export class StatsComponent implements OnInit {
   results: any;
   isHidden = true;
 
-  constructor(private spinefeed: SpinefeedService) {
-    this.spinefeed.on('begin').subscribe(results => {
+  constructor(private spinefeed: SpinefeedService,
+              private appData: DataService) {
+
+    this.spinefeed.on('begin').subscribe(() => {
       this.isHidden = true;
     });
 
-    this.spinefeed.on('data').subscribe(results => {
-      this.results = results;
+    this.spinefeed.on('data').subscribe(() => {
       this.isHidden = false;
+      this.results = this.appData.get();
     });
   }
 

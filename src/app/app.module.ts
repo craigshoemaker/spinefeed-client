@@ -18,6 +18,7 @@ import { FilesService } from './providers/files.service';
 import { SpinefeedService } from './providers/spinefeed.service';
 import { ConfigService } from './providers/config.service';
 import { LocalStorageService } from './providers/local-storage.service';
+import { DataService } from './providers/data.service';
 
 import { WebviewDirective } from './directives/webview.directive';
 
@@ -59,11 +60,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   providers: [
+    ArticlesService,
+    ConfigService,
+    DataService,
     ElectronService,
     SpinefeedService,
-    ArticlesService,
     FilesService,
-    ConfigService,
     LocalStorageService
   ],
   bootstrap: [AppComponent]

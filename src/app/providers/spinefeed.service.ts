@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FilesService } from './files.service';
 import { Observable, Subject } from 'rxjs';
 import { ConfigService } from './config.service';
+import { DataService } from './data.service';
 import * as fs from 'fs';
 
 const axios = require('axios').default;
@@ -15,9 +16,11 @@ export class SpinefeedService {
   private beginSubject = new Subject<any>();
   private completeSubject = new Subject<any>();
 
-  private data: any;
+  constructor(private filesService: FilesService,
+              private config: ConfigService,
+              private appData: DataService) {
 
-  constructor(private filesService: FilesService, private config: ConfigService) { }
+  }
 
   on(type: string): Observable<any> {
 
@@ -33,7 +36,7 @@ export class SpinefeedService {
   export(filePath: string) {
     return new Promise((resolve, reject) => {
       const exportData = [];
-      this.data.articles.forEach(article => {
+      this.appData.get().articles.forEach(article => {
         article.data.details.forEach(section => {
           section.brokenRules.forEach(rule => {
             exportData.push(`${rule},${article.filePath},TYPE,ALIAS,GITHUB,DATE`);
@@ -62,9 +65,9 @@ export class SpinefeedService {
       };
 
       const response = await axios.post(url, JSON.stringify(files), requestConfig);
-      this.data = response.data.details;
-      this.dataSubject.next(this.data);
+      this.appData.set(response.data.details);
 
+      this.dataSubject.next();
       this.completeSubject.next();
     } catch (error) {
       debugger;

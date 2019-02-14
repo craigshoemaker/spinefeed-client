@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { SpinefeedService } from '../../providers/spinefeed.service';
-import * as path from 'path';
-
-const ipcRenderer = require('electron').ipcRenderer;
+import { DataService } from '../../providers/data.service';
 
 @Component({
   selector: 'app-results',
@@ -13,18 +10,16 @@ const ipcRenderer = require('electron').ipcRenderer;
 export class ResultsComponent implements OnInit {
 
   feedback: any;
-  root: string;
-  subscription: Subscription;
-  beginSubscription: Subscription;
 
-  constructor(private spinefeed: SpinefeedService) {
-    this.beginSubscription = this.spinefeed.on('begin').subscribe(() => {
+  constructor(private spinefeed: SpinefeedService,
+              private appData: DataService) {
+
+    this.spinefeed.on('begin').subscribe(() => {
       this.feedback = {};
     });
 
-    this.subscription = this.spinefeed.on('data').subscribe(results => {
-      this.feedback = results;
-      this.root = results.root;
+    this.spinefeed.on('data').subscribe(() => {
+      this.feedback = this.appData.get();
     });
   }
 
