@@ -8,6 +8,7 @@
 
 .article-container:hover {
     border:solid 1px #ccc;
+    background-color: #fafafa;
 }
 
 .article {
@@ -32,7 +33,7 @@
 
 .tools {
     position: absolute;
-    right: 50px;
+    right: 15px;
     top: 16px;
     color: #ccc;
 }

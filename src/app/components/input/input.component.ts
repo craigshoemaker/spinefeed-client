@@ -27,15 +27,7 @@ export class InputComponent implements OnInit {
   ngOnInit() {}
 
   getLoadingMessage(): string {
-    const date = new Date();
-    let digits = date.getSeconds().toString();
-
-    if (digits.length === 2) {
-      digits = digits[1];
-    } else {
-      digits = digits[0];
-    }
-    const index = Number(digits);
+    const index = Math.floor(Math.random() * 10) + 1;
     return this.config.messages.loadingMessages[index];
   }
 
