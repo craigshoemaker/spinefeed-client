@@ -19,6 +19,10 @@
     font-weight: 450;
 }
 
+.article .tag {
+    margin-left: 10px;
+}
+
 .results {
     background-color: #fff;
     padding: 20px;
@@ -41,4 +45,8 @@
 .tools i:hover,
 .close-button a.delete:hover {
     color:hsl(204, 86%, 53%) !important;
+}
+
+span.is-warning {
+    background-color: #fff5d0;
 }

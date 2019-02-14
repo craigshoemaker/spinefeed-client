@@ -4,8 +4,10 @@
          (mouseenter)="toggleTools()"
          (mouseleave)="toggleTools()">
         <h3>{{ article.title }}</h3>
-        <span class="has-text-grey-light" 
-              [title]="article.filePath">{{ getFileName(article.filePath) }}</span>
+        <div class="has-text-grey-light">
+          <span [title]="article.filePath">{{ getFileName(article.filePath) }}</span>
+          <span class="tag has-text-grey">{{ getDate(article.filePath) }}</span>
+        </div>
         <div class="tools" [hidden]="!isToolsVisible"><i (click)="open($event, article.filePath)" class="fas fa-external-link-alt"></i></div>
     </div>
     <div class="results content" [hidden]="!isDetailsVisible">
