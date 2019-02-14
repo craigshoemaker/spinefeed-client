@@ -39,7 +39,8 @@ export class SpinefeedService {
       this.appData.get().articles.forEach(article => {
         article.data.details.forEach(section => {
           section.brokenRules.forEach(rule => {
-            exportData.push(`${rule},${article.filePath},TYPE,ALIAS,GITHUB,DATE`);
+            const metadata = this.appData.getMetadata(article.filePath);
+            exportData.push(`${rule},${article.filePath},${metadata.name},${metadata.type},${metadata.alias},${metadata.github},${metadata.date}`);
           });
         });
       });
