@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FilesService } from './files.service';
 import { Observable, Subject } from 'rxjs';
 import { ConfigService } from './config.service';
+import * as fs from 'fs';
 
 const axios = require('axios').default;
 
@@ -13,6 +14,8 @@ export class SpinefeedService {
   private dataSubject = new Subject<any>();
   private beginSubject = new Subject<any>();
   private completeSubject = new Subject<any>();
+
+  private data: any;
 
   constructor(private filesService: FilesService, private config: ConfigService) { }
 
@@ -27,6 +30,27 @@ export class SpinefeedService {
     }
   }
 
+  export(filePath: string) {
+    return new Promise((resolve, reject) => {
+      const exportData = [];
+      this.data.articles.forEach(article => {
+        article.data.details.forEach(section => {
+          section.brokenRules.forEach(rule => {
+            exportData.push(`${rule},${article.filePath},TYPE,ALIAS,GITHUB,DATE`);
+          });
+        });
+      });
+
+      fs.writeFile(filePath, exportData.join('\n'), 'utf8', (err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    });
+  }
+
   async batch(fileOrFolderPath: string) {
     try {
       this.beginSubject.next();
@@ -38,9 +62,10 @@ export class SpinefeedService {
       };
 
       const response = await axios.post(url, JSON.stringify(files), requestConfig);
-      this.dataSubject.next(response.data.details);
-      this.completeSubject.next();
+      this.data = response.data.details;
+      this.dataSubject.next(this.data);
 
+      this.completeSubject.next();
     } catch (error) {
       debugger;
     }

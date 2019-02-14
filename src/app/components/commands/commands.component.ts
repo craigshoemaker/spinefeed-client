@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { SpinefeedService } from '../../providers/spinefeed.service';
+
+const { dialog } = require('electron').remote;
 
 @Component({
   selector: 'app-commands',
@@ -10,6 +11,7 @@ import { SpinefeedService } from '../../providers/spinefeed.service';
 export class CommandsComponent implements OnInit {
 
   isVisible = false;
+  isExporting = false;
 
   constructor(private spinefeed: SpinefeedService) {
 
@@ -23,7 +25,27 @@ export class CommandsComponent implements OnInit {
   }
 
   export() {
-    alert('export');
+    this.isExporting = true;
+
+    const options = {
+      title: 'Export Spinefeed Data',
+      buttonLabel: 'Export',
+      filters: [{
+        name: 'Comma Separated Values (CSV)',
+        extensions: ['csv']
+      }],
+      message: 'Select a folder and file name for your export file.'
+    };
+
+    dialog.showSaveDialog(options, fileName => {
+      if (fileName) {
+        this.spinefeed.export(fileName).then(() => {
+          this.isExporting = false;
+        });
+      } else {
+        this.isExporting = false;
+      }
+    });
   }
 
   ngOnInit() {  }
