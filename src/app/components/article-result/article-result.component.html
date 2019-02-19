@@ -8,7 +8,7 @@
           <span [title]="article.filePath">{{ getFileName(article.filePath) }}</span>
           <span class="tag has-text-grey">{{ getDate(article.filePath) }}</span>
         </div>
-        <div class="tools" [hidden]="!isToolsVisible"><i (click)="open($event, article.filePath)" class="fas fa-external-link-alt"></i></div>
+        <div class="tools" [hidden]="!isToolsVisible"><i (click)="open($event, article.filePath)" class="fas fa-external-link-alt" title="Open in editor"></i></div>
     </div>
     <div class="results content" [hidden]="!isDetailsVisible">
       <div class="close-button"><a (click)="toggleDetails()" class="delete"></a></div>
