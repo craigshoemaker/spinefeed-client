@@ -18,6 +18,8 @@ export class ArticleResultComponent implements OnInit {
   isDetailsVisible = false;
   isFresh = true;
 
+  private metadata = null;
+
   constructor(private appData: DataService) {}
 
   checkFreshness(date): boolean {
@@ -32,8 +34,19 @@ export class ArticleResultComponent implements OnInit {
     return path.basename(filePath);
   }
 
+  getMetadata(filePath: string) {
+    if (this.metadata === null) {
+      this.metadata = this.appData.getMetadata(filePath);
+    }
+    return this.metadata;
+  }
+
+  getType(filePath) {
+    return this.getMetadata(filePath).type;
+  }
+
   getDate(filePath) {
-    const date = this.appData.getMetadata(filePath).date;
+    const date = this.getMetadata(filePath).date;
     this.isFresh = this.checkFreshness(date);
     return date;
   }
