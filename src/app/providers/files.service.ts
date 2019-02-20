@@ -46,7 +46,16 @@ export class FilesService {
             const type = this.extractText(contents, /ms\.topic:\s(.+)/);
             const name = path.basename(file);
 
-            this.appData.setMetadata(file, alias, github, date, type, name);
+            const metadata = {
+              key: file,
+              alias: alias,
+              github: github,
+              date: date,
+              type: type,
+              name: name
+            };
+
+            this.appData.setMetadata(metadata);
 
             fileContents.push({
               filePath: file,

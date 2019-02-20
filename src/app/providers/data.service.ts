@@ -1,6 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 
+interface IMetadata {
+  key: string;
+  alias: string;
+  github: string;
+  date: string;
+  type: string;
+  name: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,13 +18,13 @@ export class DataService {
   private values: any;
   private metadata = {};
 
-  setMetadata(key, alias, github, date, type, name) {
-    this.metadata[key] = {
-      alias: alias,
-      github: github,
-      date: date,
-      type: type,
-      name: name
+  setMetadata(data: IMetadata) {
+    this.metadata[data.key] = {
+      alias: data.alias,
+      github: data.github,
+      date: data.date,
+      type: data.type,
+      name: data.name
     };
   }
 
