@@ -29,6 +29,7 @@ import { StatsComponent } from './components/stats/stats.component';
 import { ResultsComponent } from './components/results/results.component';
 import { ArticleResultComponent } from './components/article-result/article-result.component';
 import { CommandsComponent } from './components/commands/commands.component';
+import { InvalidArticlePipe } from './pipes/invalid-article.pipe';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -44,7 +45,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     StatsComponent,
     ResultsComponent,
     ArticleResultComponent,
-    CommandsComponent
+    CommandsComponent,
+    InvalidArticlePipe
   ],
   imports: [
     BrowserModule,

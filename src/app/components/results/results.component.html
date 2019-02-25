@@ -1,5 +1,5 @@
 <div class="results-container">
-    <div *ngFor="let article of feedback?.articles">
+    <div *ngFor="let article of feedback?.articles | showInvalidArticlesFilter">
         <app-article-result [article]="article"></app-article-result>
     </div>
 </div>
