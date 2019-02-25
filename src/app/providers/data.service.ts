@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
 
 interface IMetadata {
   key: string;
