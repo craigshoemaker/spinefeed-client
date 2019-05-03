@@ -43,6 +43,8 @@ export class FilesService {
             const alias = this.extractText(contents, /ms\.author:\s(.+)/);
             const github = this.extractText(contents, /[^ms\.]author:\s(.+)/);
             const date = this.extractText(contents, /ms\.date:\s(.+)/);
+            const msService = this.extractText(contents, /ms\.service:\s?(.+)/);
+            const msSubService = this.extractText(contents, /ms\.subservice:\s(.+)/);
             const type = this.extractText(contents, /ms\.topic:\s(.+)/);
             const name = path.basename(file);
 
@@ -52,7 +54,9 @@ export class FilesService {
               github: github,
               date: date,
               type: type,
-              name: name
+              name: name,
+              service: msService,
+              subservice: msSubService
             };
 
             this.appData.setMetadata(metadata);

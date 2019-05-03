@@ -7,6 +7,8 @@ interface IMetadata {
   date: string;
   type: string;
   name: string;
+  service: string;
+  subservice: string;
 }
 
 @Injectable({
@@ -23,7 +25,9 @@ export class DataService {
       github: data.github,
       date: data.date,
       type: data.type,
-      name: data.name
+      name: data.name,
+      service: data.service,
+      subservice: data.subservice
     };
   }
 

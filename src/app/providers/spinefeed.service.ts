@@ -40,7 +40,7 @@ export class SpinefeedService {
         article.data.details.forEach(section => {
           section.brokenRules.forEach(rule => {
             const metadata = this.appData.getMetadata(article.filePath);
-            exportData.push(`${rule},${article.filePath},${metadata.name},${metadata.type},${metadata.alias},${metadata.github},${metadata.date}`);
+            exportData.push(`${rule},${article.filePath},${metadata.name},${metadata.type},${metadata.alias},${metadata.github},${metadata.date},${metadata.service},${metadata.subservice}`);
           });
         });
       });
