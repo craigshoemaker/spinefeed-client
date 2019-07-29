@@ -27,6 +27,7 @@ export class ConfigService {
       'Jumping to lightspeed',
       'Crawling through the wormhole',
       'Making all your base are belong to us',
+      'Entering the updside down',
       'Igniting the Spinefeed thrusters',
       'Working to not throw away my shot'
     ]
